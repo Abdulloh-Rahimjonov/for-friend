@@ -1,0 +1,17 @@
+{
+  "name": "qalaysan muhab",
+  "short_name": "muhab",
+  "description": "qalaysan muhab - Premium Gorilla Web App",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0a0c14",
+  "theme_color": "#0d0f17",
+  "icons": [
+    {
+      "src": "assets/gorilla.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
