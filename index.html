@@ -1,145 +1,28 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qalaysan muhab</title>
-  
-  <!-- SEO & Social Meta Tags -->
-  <meta name="description" content="qalaysan muhab - Premium Gorilla Web App" />
-  <meta property="og:title" content="qalaysan muhab" />
-  <meta property="og:description" content="qalaysan muhab - Zamonaviy va chiroyli web ilova" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/gorilla.jpg" />
-  
-  <!-- Web App (PWA) Meta -->
-  <meta name="theme-color" content="#0d0f17" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" type="image/jpeg" href="assets/gorilla.jpg" />
-  <link rel="apple-touch-icon" href="assets/gorilla.jpg" />
-
-  <!-- Google Fonts: Plus Jakarta Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css" />
-  
-  <!-- QRCode.js for offline/instant QR Code generation -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gorilla</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #000;
+    }
+    img {
+      max-width: 100vw;
+      max-height: 100vh;
+      object-fit: contain;
+      display: block;
+    }
+  </style>
 </head>
 <body>
-  <!-- Ambient background glow elements -->
-  <div class="glow-orb orb-1"></div>
-  <div class="glow-orb orb-2"></div>
-  <div class="ambient-grid"></div>
-
-  <main class="app-container">
-    <div class="card glass-card" id="mainCard">
-      <!-- Badge -->
-      <div class="badge">
-        <span class="badge-dot"></span>
-        <span>GORILLA WEB APP</span>
-      </div>
-
-      <!-- Main Heading -->
-      <h1 class="main-title" id="mainTitle">muhab</h1>
-
-      <p class="subtitle">Salom, do'stim! Gorilla kayfiyati hamrohing bo'lsin.</p>
-
-      <!-- Gorilla Image Showcase -->
-      <div class="image-wrapper" id="imageWrapper">
-        <div class="image-glow"></div>
-        <img 
-          src="assets/gorilla.jpg" 
-          alt="Chiroyli Gorilla" 
-          class="gorilla-img" 
-          id="gorillaImg"
-          loading="eager"
-        />
-        <div class="image-overlay-reflection"></div>
-      </div>
-
-      <!-- Interactive Actions -->
-      <div class="actions-group">
-        <button class="btn btn-primary" id="openQrBtn">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="3" width="7" height="7"></rect>
-            <rect x="14" y="3" width="7" height="7"></rect>
-            <rect x="14" y="14" width="7" height="7"></rect>
-            <rect x="3" y="14" width="7" height="7"></rect>
-          </svg>
-          QR Kod Chiqarish
-        </button>
-
-        <button class="btn btn-secondary" id="shareBtn">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="18" cy="5" r="3"></circle>
-            <circle cx="6" cy="12" r="3"></circle>
-            <circle cx="18" cy="19" r="3"></circle>
-            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-          </svg>
-          Ulashish
-        </button>
-      </div>
-
-      <div class="footer-note">
-        <span>⚡️ Vercel & PWA uchun tayyorlandi</span>
-      </div>
-    </div>
-  </main>
-
-  <!-- QR Code Modal Dialog -->
-  <div class="modal-backdrop" id="qrModal">
-    <div class="modal-card glass-card">
-      <div class="modal-header">
-        <h3 class="modal-title">Web Ilova QR Kodi</h3>
-        <button class="modal-close-btn" id="closeQrBtn" aria-label="Yopish">&times;</button>
-      </div>
-      
-      <p class="modal-desc">
-        Ushbu QR kodni telefon kamerasi orqali skaner qilib, saytni darhol oching yoki ilova qilib o'rnating.
-      </p>
-
-      <div class="qr-container-outer">
-        <div id="qrcode" class="qr-box"></div>
-      </div>
-
-      <div class="url-input-container">
-        <label for="qrUrlInput" class="input-label">Ilova manzili (URL):</label>
-        <div class="input-wrapper">
-          <input 
-            type="text" 
-            id="qrUrlInput" 
-            class="url-input" 
-            placeholder="https://sizning-domen.vercel.app" 
-          />
-          <button class="btn-refresh" id="refreshQrBtn" title="QR yangilash">
-            Yangilash
-          </button>
-        </div>
-      </div>
-
-      <div class="modal-footer-actions">
-        <button class="btn btn-primary" id="downloadQrBtn">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
-          QR Kodni Yuklab Olish (PNG)
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Toast Notification -->
-  <div class="toast" id="toastMessage">Havola nusxalandi!</div>
-
-  <script src="app.js"></script>
+  <img src="assets/gorilla.jpg" alt="Gorilla">
 </body>
 </html>
