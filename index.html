@@ -1,30 +1,76 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Gorilla</title>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      min-height: 100vh;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #000000;
+    }
+
+    /* Container fills screen in any orientation */
+    .image-container {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #000;
+      background-color: #000000;
     }
-    img {
-      max-width: 100vw;
-      max-height: 100vh;
-      object-fit: contain;
+
+    /* Gorilla image: fully fills screen, maintains 100% aspect ratio without distortion */
+    .fullscreen-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
       display: block;
+      /* Maximize rendering sharpness */
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: high-quality;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      transition: object-fit 0.2s ease;
+      cursor: pointer;
+    }
+
+    /* Optional toggle to fit without cropping on click/tap */
+    .fullscreen-image.fit-contain {
+      object-fit: contain;
     }
   </style>
 </head>
 <body>
-  <img src="assets/gorilla.jpg" alt="Gorilla">
+  <div class="image-container">
+    <img 
+      src="assets/gorilla.png" 
+      alt="Gorilla" 
+      class="fullscreen-image" 
+      id="gorillaImage"
+      title="Bosing: ekranga to'liq moslash / to'ldirish"
+    />
+  </div>
+
+  <script>
+    // Bir marta bosganda to'liq qoplash (cover) va butun ko'rinish (contain) o'rtasida almashish
+    const img = document.getElementById('gorillaImage');
+    img.addEventListener('click', () => {
+      img.classList.toggle('fit-contain');
+    });
+  </script>
 </body>
 </html>
-
-
